@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "Â$(ls -la)Ã"
+echo "$(ls -al)"
