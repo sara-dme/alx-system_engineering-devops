@@ -1,2 +1,2 @@
 #!/bin/bash
-echo 'the current working directory is :' $(pwd) > 0-current_working_directory
+echo 'The current working directory : $(pwd)'
