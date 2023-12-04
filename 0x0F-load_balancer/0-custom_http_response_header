@@ -6,7 +6,10 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 
 # add custom response header to know the server name for debugging
-sudo sed -i "48i\\\tadd_header X-Served-By \"$HOSTNAME\";\n" /etc/nginx/sites-available/default
+HOST_NAME=$(hostname)
+HEADER="\\\n\tadd_header X-Served-By $HOST_NAME;\n"
+
+sudo sed -i "23i $HEADER" /etc/nginx/sites-available/default
 
 # create a first index.html
 echo "Hello World!" > /var/www/html/index.html
