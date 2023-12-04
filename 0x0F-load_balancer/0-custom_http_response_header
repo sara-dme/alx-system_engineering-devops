@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Configure Nginx so that its HTTP response contains a custom header
+
+# install nginx on web-01 server
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+# add custom response header to know the server name for debugging
+sudo sed -i "48i\\\tadd_header X-Served-By \"$HOSTNAME\";\n" /etc/nginx/sites-available/default
+
+# create a first index.html
+echo "Hello World!" > /var/www/html/index.html
+
+# Add to the nginx configuration file a error page 404
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+sudo service nginx start
+
