@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# configure a new HAproxy
+
+# install HAproxy on a server
+sudo apt-get -y update
+sudo apt-get -y install haproxy
+
+# configure haproxy configuration file
+# Distribute requests using a roundrobin algorithm
+echo '
+frontend endit
+	bind 0:80
+	default_backend server_back
+
+backend server_back
+	balance roundrobin
+	server 368478-web-01 34.227.93.243
+	server 368478-web-02 107.23.91.3
+' >> /etc/haproxy/haproxy.cfg
+
+# Restart HAproxy service
+sudo service haproxy restart
