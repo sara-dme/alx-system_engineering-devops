@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# give info about domain & subdomain
+
+info() {
+	dig "$2"."$1" | grep -A1 'ASWER SECTION:' | tail -n 1 | awk '{print "The subdomain " subdomain " is a " $4 " record and point to " $5"}' subdomain="$2"
+}
+if [ "$#" == 1 ];
+then
+	info "$1" "www"
+	info "$1" "lb-01"
+	info "$1" "web-01"
+	info "$1" "web-02"
+elif [ "$#" == 2];
+then
+	info "$1" "$2"
+fi
