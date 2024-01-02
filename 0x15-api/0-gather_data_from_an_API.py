@@ -8,13 +8,13 @@ import sys
 
 if __name__ == "__main__":
     emplyId = sys.argv[1]
-    uurl = "https://jsonplaceholder.typicode.com/users"
-    url = uurl + "/" + emplyId
+    url = "https://jsonplaceholder.typicode.com/users"
+    usr = url + "/" + emplyId
 
-    res = requests.get(url)
-    emplyName = res.json().get('name')
+    res_user = requests.get(usr)
+    emplyName = res_user.json().get('name')
 
-    todo = url + "/todos"
+    todo = usr + "/todos"
     res = requests.get(todo)
     tasks = res.json()
     done = 0
