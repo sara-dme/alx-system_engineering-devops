@@ -3,9 +3,9 @@
 returns information about his/her TODO list progress.
 """
 
+import json
 import requests
 import sys
-import json
 
 if __name__ == "__main__":
     emplyId = sys.argv[1]
