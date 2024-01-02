@@ -5,6 +5,7 @@ returns information about his/her TODO list progress.
 
 import requests
 import sys
+import json
 
 if __name__ == "__main__":
     emplyId = sys.argv[1]
@@ -12,14 +13,17 @@ if __name__ == "__main__":
     usr = url + "/" + emplyId
 
     res_user = requests.get(usr)
-    emplyName = res_user.json().get('name')
+    name = res_user.json().get('username')
 
     todo = usr + "/todos"
     res = requests.get(todo)
     tasks = res.json()
 
-    with open('{}.csv'.format(emplyId), 'w') as file:
-        for t in tasks:
-            file.write('"{}","{}","{}","{}"\n'
-                       .format(emplyId, emplyName, t.get('completed'),
-                               t.get('title')))
+    dictionary = {emplyId: []}
+    for t in tasks:
+        dictionary[emplyId].append({
+            "task": t.get('title'),
+            "completed": t.get('completed'),
+            "username": name})
+    with open('{}.json'.format(emplyId), 'w') as filename:
+        json.dump(dictionary, filename)
