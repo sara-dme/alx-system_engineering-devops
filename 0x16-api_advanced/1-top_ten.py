@@ -13,7 +13,7 @@ def top_ten(subreddit):
     """ headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; '
                'rv:121.0) Gecko/20100101 Firefox/121.8'}
                """
-    headers = {'User-Agent': ''}
+    headers = {'User-Agent': '*'}
     params = {"limit": 10}
     req = requests.get(url, allow_redirects=False, params=params,
                        headers=headers)
