@@ -10,7 +10,7 @@ def number_of_subscribers(subreddit):
     if not subreddit or type(subreddit) is not str:
         return 0
     url = 'http://www.reddit.com/r/{}/about.json'.format(subreddit)
-    headers = {'User-Agent': '0x16-api_advanced:project:v1.0.0'}
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win; x64)'}
     req = requests.get(url, headers=headers)
     if req.status_code == 200:
         return req.json().get("data").get("subscribers")
