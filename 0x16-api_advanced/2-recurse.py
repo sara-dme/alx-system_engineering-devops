@@ -6,6 +6,7 @@ a given subreddit.
 """
 import requests
 
+
 def recurse(subreddit, after=None):
     """ the function that queries tha Reddit API"""
     headers = {"User_Agent": ""}
