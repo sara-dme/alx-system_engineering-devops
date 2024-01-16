@@ -13,7 +13,7 @@ def number_of_subscribers(subreddit):
     headers = {'User-agent': '0x16-api_advanced:project:v1.0.0'}
     req = requests.get(url, headers=headers)
     if req.status_code == 200:
-        r = r.json()
+        req = req.json()
     else:
         return 0
-    return r.get('data', {}).get('subscribers', 0)
+    return req.get('data', {}).get('subscribers', 0)
