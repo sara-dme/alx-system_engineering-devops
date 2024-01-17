@@ -1,5 +1,5 @@
 # Configure ssh client so that you can connect to a server without typing a password
  Host *
-	HostName 54.197.122.248
+	HostName 3.90.83.226
 	IdentityFile ~/.ssh/school
 	PasswordAuthentication no
